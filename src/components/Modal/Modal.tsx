@@ -25,6 +25,14 @@ export default function Modal({ children, handleCloseModal }: ModalProps) {
     };
   }, [handleCloseModal]);
 
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  });
+
   return createPortal(
     <div
       className={css.backdrop}

@@ -2,7 +2,7 @@ import css from "./NoteForm.module.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import type { FormikHelpers } from "formik";
 import * as Yup from "yup";
-import type { OrderFormValues } from "../../types/note";
+import type { Note, NoteTag } from "../../types/note";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { createNote } from "../../services/noteService";
 import toast from "react-hot-toast";
@@ -11,7 +11,13 @@ interface NoteFormProps {
   handleCloseModal: () => void;
 }
 
-const INIT_VALUES: OrderFormValues = { title: "", content: "", tag: "" };
+export interface NoteFormValues {
+  title: string;
+  content: string;
+  tag: NoteTag;
+}
+
+const INIT_VALUES: NoteFormValues = { title: "", content: "", tag: "" };
 
 const OrderSchema = Yup.object({
   title: Yup.string()
@@ -28,8 +34,8 @@ export default function NoteForm({ handleCloseModal }: NoteFormProps) {
   const queryClient = useQueryClient();
 
   const handleSubmit = (
-    values: OrderFormValues,
-    formikHelpers: FormikHelpers<OrderFormValues>,
+    values: NoteFormValues,
+    formikHelpers: FormikHelpers<NoteFormValues>,
   ) => {
     mutate(values, {
       onSuccess: () => {
@@ -39,7 +45,7 @@ export default function NoteForm({ handleCloseModal }: NoteFormProps) {
     });
   };
 
-  const { mutate, isPending } = useMutation<void, Error, OrderFormValues>({
+  const { mutate, isPending } = useMutation<Note, Error, NoteFormValues>({
     mutationFn: createNote,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["notes"] });

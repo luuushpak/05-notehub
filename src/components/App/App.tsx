@@ -33,16 +33,15 @@ export default function App() {
 
   const handleInputChange = useDebouncedCallback((value: string) => {
     setQuery(value);
+    setSheet(1);
   }, 1000);
 
   const handleShowModal = () => {
     setIsModal(true);
-    document.body.style.overflow = "hidden";
   };
 
   const handleCloseModal = () => {
     setIsModal(false);
-    document.body.style.overflow = "";
   };
 
   return (

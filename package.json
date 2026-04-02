@@ -12,6 +12,7 @@
   "dependencies": {
     "@tanstack/react-query": "^5.95.0",
     "@tanstack/react-query-devtools": "^5.95.0",
+    "@vitejs/plugin-react": "^6.0.1",
     "axios": "^1.13.6",
     "formik": "^2.4.9",
     "modern-normalize": "^3.0.1",
@@ -34,6 +35,6 @@
     "globals": "^16.5.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.48.0",
-    "vite": "^7.3.1"
+    "vite": "^8.0.3"
   }
 }

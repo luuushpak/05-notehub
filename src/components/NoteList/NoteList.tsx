@@ -15,7 +15,7 @@ export default function NoteList({ notes }: NoteListProps) {
     mutate(id);
   };
 
-  const { mutate, isPending } = useMutation<void, Error, string>({
+  const { mutate, isPending } = useMutation<Note, Error, string>({
     mutationFn: deleteNote,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["notes"] });
