@@ -28,7 +28,7 @@ export default function App() {
   const fetchedNotes = data?.notes ?? [];
 
   const handleSelectPage = (selected: number) => {
-    setSheet(selected + 1);
+    setSheet(selected);
   };
 
   const handleInputChange = useDebouncedCallback((value: string) => {

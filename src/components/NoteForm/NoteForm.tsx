@@ -17,7 +17,7 @@ export interface NoteFormValues {
   tag: NoteTag;
 }
 
-const INIT_VALUES: NoteFormValues = { title: "", content: "", tag: "" };
+const INIT_VALUES: NoteFormValues = { title: "", content: "", tag: "Todo" };
 
 const OrderSchema = Yup.object({
   title: Yup.string()

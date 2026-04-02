@@ -40,12 +40,12 @@ export async function fetchNotes({
 }
 
 export async function createNote(newNote: CreateNoteProps): Promise<Note> {
-  const response = await api.post("/notes", newNote);
+  const response = await api.post<Note>("/notes", newNote);
 
   return response.data;
 }
 export async function deleteNote(id: string): Promise<Note> {
-  const response = await api.delete(`/notes/${id}`);
+  const response = await api.delete<Note>(`/notes/${id}`);
 
   return response.data;
 }
